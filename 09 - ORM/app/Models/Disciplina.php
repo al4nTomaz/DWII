@@ -4,18 +4,23 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Disciplina extends Model {
-    
+class Disciplina extends Model
+{
     use HasFactory;
+    use SoftDeletes;
+    protected $fillable = ['nome', 'curso_id', 'carga'];
+
+    /*public function professor() {
+        return $this->belongsTo('\App\Models\Professor', 'vinculos');
+    }*/
 
     public function curso() {
-        return $this->belongsTo('App\Models\Curso');
+        return $this->belongsTo('\App\Models\Curso');
     }
 
     public function aluno() {
-        return $this->belongsToMany('\App\Models\Aluno', 'matriculas');
+        return $this->hasMany('\App\Models\Aluno', 'matriculas');
     }
- 
- 
 }

@@ -4,13 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Eixo extends Model {
-    
+class AreaEixo extends Model
+{
     use HasFactory;
-
-    public function sala() {
-        return $this->hasOne('\App\Models\Sala');
-    }
- 
+    use SoftDeletes;
+    protected $fillable = ['nome', 'descricao'];
 }
